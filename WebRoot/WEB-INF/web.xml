@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>
+  
+  <!-- Demo1Servlet名称对应的java类是 wubin.Demo1Servlet -->
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Demo1Servlet</servlet-name>
+    <servlet-class>servlet.Demo1Servlet</servlet-class>
+    
+    <!-- 服务器启动的时候创建该Servlet ,数字代表启动数序,从2开始 -->
+	<load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>Demo2Servlet</servlet-name>
+    <servlet-class>servlet.Demo2Servlet</servlet-class>
+  </servlet>
+
+
+  <!--  Demo1Servlet的影射地址是 /servlet/Demo1Servlet -->
+  <servlet-mapping>
+    <servlet-name>Demo1Servlet</servlet-name>
+    <url-pattern>/servlet/Demo1Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Demo2Servlet</servlet-name>
+    <url-pattern>/servlet/Demo2Servlet</url-pattern>
+  </servlet-mapping>	
+  
+  <!--  欢迎地址 -->
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
