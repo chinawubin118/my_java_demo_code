@@ -22,6 +22,20 @@
     <servlet-name>Demo2Servlet</servlet-name>
     <servlet-class>servlet.Demo2Servlet</servlet-class>
   </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>TestDownloadChineseFileNameServlet</servlet-name>
+    <servlet-class>servlet.TestDownloadChineseFileNameServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>GetFormDataServlet</servlet-name>
+    <servlet-class>servlet.GetFormDataServlet</servlet-class>
+  </servlet>
+
+
 
 
   <!--  Demo1Servlet的影射地址是 /servlet/Demo1Servlet -->
@@ -32,6 +46,14 @@
   <servlet-mapping>
     <servlet-name>Demo2Servlet</servlet-name>
     <url-pattern>/servlet/Demo2Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TestDownloadChineseFileNameServlet</servlet-name>
+    <url-pattern>/servlet/TestDownloadChineseFileNameServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>GetFormDataServlet</servlet-name>
+    <url-pattern>/servlet/GetFormDataServlet</url-pattern>
   </servlet-mapping>	
   
   <!--  欢迎地址 -->
