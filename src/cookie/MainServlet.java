@@ -19,7 +19,11 @@ public class MainServlet extends HttpServlet {
 
 		String name = (String) request.getAttribute("name");
 
-		out.write(name + "，欢迎你");
+		// out.write(name + "，欢迎你");
+
+		String json = "{\"succeed\":\"111\",\"sucInfo\":\"缺少必要参数！\",\"dataInfo\":[],\"interface_name\":\"getSchoolList\"}";
+
+		out.write(json);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
