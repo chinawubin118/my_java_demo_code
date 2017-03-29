@@ -1,4 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -27,7 +29,7 @@
 <body>
 	This is my JSP page.
 	<br>
-	<p>JSP九大隐式对象</p>
+	<p><b>------JSP九大隐式对象------</b></p>
 	<p>1.request.2.respons3.config.4.application.5.exception</p>
 	<p>6.session.7.page.8.out.9.pageContext</p>
 
@@ -60,5 +62,24 @@
 		//pageContext.forward("/demo.jsp");
 		//pageContext.include("/demo.jsp");
 	%>
+	
+	<p><b>------EL表达式支持对象数据导航------</b></p>
+	<p><b>------EL表达式支持各种运算符------</b></p>
+	<p><b>------EL中的11个隐式对象------</b></p>
+	<ol>
+		<li>pageContext,和JSP内置的pageContext完全一样.</li>
+		<li>requestScope</li>
+		<li>pageScope</li>
+		<li>sessionScope</li>
+		<li>applicationScope</li>
+		<li>param</li>
+		<li>paramValues</li>
+		<li>header</li>
+		<li>headerValues</li>
+		<li>initParam</li>
+		<li>cookie</li>
+	</ol>
+	<p><b>------EL表达式支持自定义函数------</b></p>
+	调用sun公司定义的函数:${fn:contains("aaabbb","aaa") }
 </body>
 </html>
