@@ -80,6 +80,7 @@
 		<li>cookie</li>
 	</ol>
 	<p><b>------EL表达式支持自定义函数------</b></p>
-	调用sun公司定义的函数:${fn:contains("aaabbb","aaa") }
+	调用sun公司定义的函数:${fn:contains("aaabbb","aaa") } <br>
+	调用sun公司定义的函数(去掉字符串两边的空格):${fn:trim("   a   bc  ") }
 </body>
 </html>
