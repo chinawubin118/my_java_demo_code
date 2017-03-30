@@ -110,5 +110,44 @@
 	表单过滤:
 		:input  所有的表单子标签  input select textarea button
 	</p>
+	
+	<p><b>------jQuery对属性和css操作------</b></p>
+	<p>对属性的操作:<br>
+		attr():设置或者获取元素的属性<br>
+			方式1:获取
+				attr("属性名称")
+			方式2:设置一个属性
+				attr("属性名称","值");
+			方式3:设置多个属性  json
+				attr({
+					"属性1":"值1",
+					"属性2":"值2"
+				})<br>
+		removeAttr("属性名称"):移除指定属性<br>
+	//添加class属性的时候 
+	//	attr("class","值");<br>
+	addClass("指定的样式值"); 相当于 attr("class","指定的样式值");
+	removeClass("指定的样式值");
+	</p>
+	
+	<p>
+	对css操作:操作元素的style属性<br>
+		css():获取或者设置css样式
+			方式1:获取	<br>
+				css("属性名")
+			方式2:设置一个属性
+				css("属性名","值")
+			方式3:设置多个
+				css({
+					"属性1":"值1",
+					"属性2":"值2"
+				});<br>
+	</p>
+	<p>
+		获取元素的尺寸:<br>
+		width()
+		height()
+	</p>
+	
 </body>
 </html>
