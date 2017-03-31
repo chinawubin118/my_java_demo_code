@@ -130,6 +130,8 @@
 	removeClass("指定的样式值");
 	</p>
 	
+	<p><b>提示:若jquery版本>1.6 统一使用 prop操作元素的属性</b>></p>
+	
 	<p>
 	对css操作:操作元素的style属性<br>
 		css():获取或者设置css样式
@@ -149,5 +151,46 @@
 		height()
 	</p>
 	
+	<p><b>------jQuery遍历数组------</b><br>
+		arr.each(function(index,dom){
+			$(this).val();//得到每一个对象的值.....index:当前的索引,dom:当前的dom对象
+		});<br>
+		
+		$.each(arr,function(){
+		
+		});
+	</p>
+	
+	<p>jQuery设置或者获取value属性<br>
+		$obj.val().....获取value<br>
+		$obj.val("需要设置的值").....设置value的值
+	</p>
+	
+		<p>jQuery设置或者获取标签体的内容<br>
+		$obj.html().....获取标签体的内容(html源代码)<br>
+		$obj.html("需要设置的内容").....设置标签体的内容(可以写html源代码)<br>
+		
+		$obj.text().....获取标签体的内容(纯文本)<br>
+		$obj.text("需要设置的内容").....设置标签体的内容(纯文本)<br>
+	</p>
+	
+	<p><b>------jQuery文档操作------</b><br>
+		内部插入<br>
+		a.append(c).....将c插入到a的标签体后面<br>
+		a.prepend(c).....将c插入到a的标签体前面<br><br>
+		外部插入<br>
+		a.after(c).....将c放到a的后面<br>
+		a.before(c).....将c放到a的前面<br><br>
+		删除<br>
+		empty().....清空袁元素<br>
+		remove().....删除元素<br><br>
+	</p>
+	
+	<p><b>------补充:表单对象属性选择过滤器------</b><br>
+		:enabled......可用的<br>
+		:disabled.....不可用的<br>
+		:checked.....选中的(针对radio和checkbox)<br>
+		:selected.....选中的(针对下拉列表)<br>
+	</p>
 </body>
 </html>
