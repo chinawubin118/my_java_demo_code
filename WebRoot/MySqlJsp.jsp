@@ -93,13 +93,108 @@
 	insert into products values (null,'老干妈',20,180,3,null);<br>
 	insert into products values (null,'豌豆黄',20,120,2,null);<br><br>
 	说明:pdate,此类型传null的时候,默认会将系统时间存入数据库.<br>
+
+	<p><b>------sql简单查询------</b></p>
+	1.查询所有的商品<br>
+	select * from products;<br>
+	2.查询商品名和商品价格.<br>
+	-- 查看指定的字段 <br>
+	-- 格式: select 字段名1,字段名2 from 表名<br>
+	select pname,price from products;<br>
+	3.查询所有商品都有那些价格.<br>
+	-- 去重操作 distinct<br>
+	-- 格式: select distinct 字段名,字段名2 from 表名<br>
+	select price from products;<br>
+	select distinct price from products;<br>
+	4.将所有商品的价格+10元进行显示.(别名)<br>
+	-- 可以在查询的结果之上进行运算,不影响数据库中的值<br>
+	-- 给列起别名 格式: 字段名 [as] 别名(as可写可不写)<br>
+	select price+10 from products;<br>
+	select price+10 新价格 from products;<br>
+	select price+10 '新价格' from products;<br>
+	select price+10 '新 价 格' from products;<br>
+	select price+10 `新 价 格` from products;<br>	
 	
+	<p><b>------sql基本条件查询------</b></p>
+	1.查询商品名称为十三香的商品所有信息：<br>
+	select * from products where pname = '十三香';<br>
+	2.查询商品价格>60元的所有的商品信息:<br>
+	select * from products where price>60;<br><br>
+	3.查询商品名称中包含”新”的商品<br>
+	select * from products where pname like "%新%";<br>
+	-- 模糊匹配 <br>
+	-- 格式: 字段名 like "匹配规则";<br>
+	-- 匹配内容 %<br>
+	"龙"	值为龙<br>
+	"%龙".....值以"龙"结尾<br>
+	"龙%".....值以"龙"开头<br>
+	"%龙%".....值包含"龙"<br>
+	-- 匹配个数 "__" 占两个位置<br><br>
+			
+	4.查询价格为38,68,98的商品.<br>
+	select * from products where price = 38 or price = 68 or price=98;<br>
+	select * from products where price in(38,68,98);<br><br>
+	
+	where后的条件写法：<br>
+	* > ,<,=,>=,<=,<>,!=<br>
+	* like 使用占位符 _ 和 %  _代表一个字符 %代表任意个字符. <br>
+	* select * from product where pname like '%新%';<br>
+	* in在某个范围中获得值.<br>
+	* select * from product where pid in (2,5,8);<br>
+	* between 较小值 and 较大值<br>
+	select * from products where price between 50 and 70;<br>
+	
+	<p><b>------sql排序查询------</b></p>
+	排序查询:<br>
+	1.查询所有的商品，按价格进行排序.(asc-升序,desc-降序).<br>
+	select * from products order by price desc;<br>
+	2.查询名称有新的商品的信息并且按价格降序排序.<br>
+	select * from products where pname like '%新%' order by price desc;<br>
+	
+	<p><b>------sql聚合函数------</b></p>
+	--对一列进行计算 返回值是一个,忽略null值.<br>
+	* sum(),avg(),max(),min(),count();<br>
+	1.获得所有商品的价格的总和：<br>
+	select sum(price) from products;<br>
+	2.获得商品表中价格的平均数：<br>
+	select avg(price) from products;<br>
+	-- round(值,保留小数位)<br>
+	select round(avg(price),2) from products;<br>
+	3.获得商品表中有多少条记录：<br>
+	select count(*) from products;<br>
+	
+	<p><b>------使用group by分组------</b></p>
+	1.根据cno字段分组，分组后统计商品的个数.<br>
+	select cno,count(*) from products group by cno;<br>
+	2.根据cno分组，分组统计每组商品的总数量，并且总数量> 200;<br>
+	select cno,sum(pnum) from products  group by cno;<br>
+	select cno,sum(pnum) from products  group by cno having sum(pnum)>200;<br>
+	注意:where和having区别:<br>
+	1.where 是对分组前的数据进行过滤 ;having 是对分组后的数据进行过滤 .<br>
+	2.where 后面不能使用聚合函数,having可以<br>
+	
+	<p><b>------java和sql中的数据类型对照------</b></p>	
+	byte----------tinyint<br>			
+	short----------smallint<br>
+	int----------int(★)<br>
+	long----------bigint<br>
+	char/String----------varchar(★)|char<br>
+	说明:varchar:可变长度 mysql的方言 ;varchar(20):存放abc,只会占用三个;char:固定长度 char(20):存放abc,占用20个
+	boolean----------使用tinyint|int 代替;<br>
+	float|double----------float|double;<br>
+	注意:double(5,2):该小数长度为5个,小数占2个  最大值:999.99.<br>
+
+	java.sql.Date----------date;日期<br>
+	java.sql.Time----------time;时间<br>
+	java.sql.Timestamp----------timestamp(★) 时间戳 若给定值为null,数据库会把当前的系统时间存放到数据库中;<br>
+	说明:datetime(★);日期+时间,java中无对应;<br>
+					
+	java.sql.Clob(长文本)	----------mysql的方言(text);<br>
+	java.sql.Blob(二进制)	----------blob;<br>
 	
 	<p>
 	 
 	</p>
-	
-	<p><b>------mysql------</b></p>
 	
 	<p><b>------mysql------</b></p>
 	
