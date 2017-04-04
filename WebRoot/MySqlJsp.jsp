@@ -192,10 +192,42 @@
 	java.sql.Clob(长文本)	----------mysql的方言(text);<br>
 	java.sql.Blob(二进制)	----------blob;<br>
 	
-	<p>
-	 
-	</p>
+	<p><b>------sql约束------</b></p>
+	作用:为了保证数据的有效性和完整性;<br>
+	MySql中常用的约束:主键约束(primary key);唯一约束(unique);非空约束(not null);外键约束(foreign key);<br>
 	
+	<p><b>------sql主键约束------</b></p>
+	说明:被修饰过的字段唯一非空;<br>
+	注意:一张表只能有一个主键,这个主键可以包含多个字段.<br><br>
+	
+	方式1:建表的同时添加约束格式:<br>
+	create table 表名 字段名称 字段类型 primary key;<br><br>
+	方式2:建表的同时在"约束区域"添加约束 (所有字段声明完成之后,就是"约束区域"):<br>
+	格式: create table primary key(字段1,字段2);<br>
+	例如:create table pk01(id int,username varchar(20),primary key (id));<br><br>
+			
+	方式3:建表之后,通过修改表结构添加约束;<br>
+	格式:alter table 表名 add primary key(字段名1,字段名2..);<br>
+	create table pk02(id int,username varchar(20));//创建表的时候没有指定主键;<br>
+	alter table pk02 add primary key(id,username);//修改表结构,添加字段id和username为主键;<br><br>
+	
+	<p><b>------sql唯一约束(了解)------</b></p>
+	说明:被修饰过的字段唯一,对null不起作用;<br>
+	方式1:建表的同时添加约束 ;<br>
+	格式:create table 表名 字段名称 字段类型 unique;<br>
+	例如:create table un(id int unique,username varchar(20) unique);<br><br>
+			
+	方式2:建表的同时在约束区域添加约束;<br>
+	create table 表名 unique(字段1,字段2...);<br><br>
+	方式3:建表之后,通过修改表结构添加约束;<br>
+	alter table 表名 add unique(字段1);-- 给字段1添加唯一约束;<br>
+	alter table 表名 add unique(字段1,字段2);-- 添加联合唯一约束;<br>
+	
+	<p><b>------sql非空约束(了解)------</b></p>
+	特点:被修饰过的字段非空;<br>
+	方式:建表时为字段添加非空约束not null;<br>
+	例如:create table nn(id int not null,username varchar(20) not null);<br>
+			
 	<p><b>------mysql------</b></p>
 	
 </body>
