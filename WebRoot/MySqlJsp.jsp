@@ -227,6 +227,18 @@
 	特点:被修饰过的字段非空;<br>
 	方式:建表时为字段添加非空约束not null;<br>
 	例如:create table nn(id int not null,username varchar(20) not null);<br>
+	
+	<p><b>------sql补充------</b></p>
+	truncate 清空表 ★<br>
+	格式:truncate 表名; -- 意思是:干掉表,重新创建一张空表;<br>
+	和delete from的区别:<br>
+	delete属于DML语句,delete逐条删除;<br>
+	truncate属于DDL语句,truncate是先干掉表,重新创建一张空表;<br><br>
+		
+	auto_increment 自增:<br>
+	两点要求:<br>
+	1.被修饰的字段类型支持自增. 一般是int;<br>
+	2.被修饰的字段必须是一个key. 一般是primary key<br>
 			
 	<p><b>------mysql------</b></p>
 	
