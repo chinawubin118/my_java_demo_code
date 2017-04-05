@@ -239,7 +239,109 @@
 	两点要求:<br>
 	1.被修饰的字段类型支持自增. 一般是int;<br>
 	2.被修饰的字段必须是一个key. 一般是primary key<br>
+	
+	<p><b>------sql多表------</b></p>
+	表与表之间的关系:<br>
+	常见关系:<br>
+	一对多.....用户和订单 ;分类和商品<br>
+	多对多.....订单和商品;学生和课程<br>
+	一对一.....丈夫和妻子;<br><br>
+	
+	使用ER图描述实体与实体之间的关系:<br>
+	实体用矩形表示;<br>
+	属性用椭圆表示;<br>
+	关系用菱形表示;<br>
+	
+	<p><b>------sql一对多------</b></p>
+	用户和订单:<br>
+	create table user(id int primary key auto_increment,username varchar(20));-- 创建用户表<br>
+	create table orders(id int primary key auto_increment,totalprice double,user_id int);-- 创建订单表<br><br>
+	
+	为了保证数据的有效性和完整性,添加约束(外键约束).<br>
+	在多表的一方添加外键约束:<br>
+	格式:alter table 多表名称 add foreign key(外键名称) references 一表名称(主键);<br>
+	例如:alter table orders add foreign key(user_id) references user(id);<br><br>
+	
+	添加了外键约束之后有如下特点:★<br>
+	1.主表中不能删除从表中已引用的数据;<br>
+	2.从表中不能添加主表中不存在的数据;<br><br>
+	
+	开发中处理一对多:★<br>
+	在多表中添加一个外键,名称一般为"主表的名称_id",字段类型一般和主表的主键的类型保持一致,为了保证数据的有效性和完整性,在多表的外键上添加外键约束即可.<br><br>
+	
+	<p><b>------sql多对多------</b></p>
+	例子:商品和订单;<br>
+	create table product(id int primary key auto_increment,name varchar(20),price double);-- 创建商品表<br>
+
+	create table orderitem(oid int,pid int);-- 创建中间表<br>
+		
+	-- 添加外键约束
+	alter table orderitem add foreign key(oid) references orders(id);<br>
+	alter table orderitem add foreign key(pid) references product(id);<br><br>
+	
+	开发中处理多对多:★<br>
+	引入一张中间表,存放两张表的主键,一般会将这两个字段设置为联合主键,这样就可以将多对多的关系拆分成两个一对多了;为了保证数据的有效性和完整性,需要在中间表上添加两个外键约束即可.<br><br>
+	
+	<p><b>------sql多表查询------</b></p>
+	
+	<p>
+	初始化测试数据<br><br>
+
+	 create table `user` (`id` int auto_increment primary key,`username` varchar(50));-- 用户表(user)<br>
+	 create table `orders` (`id` int  auto_increment primary key,`price` double,`user_id` int);-- 订单表(orders)<br>
+	 alter table orders add constraint user_fk foreign key (user_id) references user(id); -- 给订单表添加外键约束<br><br>
+
+	向user表中添加数据<br>
+	insert into user values(3,'张三');<br>
+	insert into user values(4,'李四');<br>
+	insert into user values(5,'王五');<br>
+	insert into user values(6,'赵六');<br>
+
+	向orders 表中插入数据<br>
+	insert into orders values(1,1314,3);<br>
+	insert into orders values(2,1314,3);<br>
+	insert into orders values(3,15,4);<br>
+	insert into orders values(4,315,5);<br>
+	insert into orders values(5,1014,null);<br>
+	</p>
+	
+	笛卡尔积:多张表无条件的联合查询.没有任何意义...<br>
+	select a.*,b.* from a,b;<br><br>
+		
+	内连接:★<br>
+	格式1:显式的内连接...select a.*,b.* from a [inner] join b on ab的连接条件.<br>
+	格式2:隐式的内连接...select a.*,b.* from a,b where ab的连接条件.<br><br>
+	
+	外连接:★<br>
+	左外连接:★select a.*,b.* from a left [outer] join b on 连接条件;<br>
+	意思:先展示join左边的(a)表的所有数据,根据条件关联查询 join右边的表(b),符合条件则展示出来,不符合以null值展示.<br>
+	右外连接:(略)<br><br>
+	
+	子查询:★<br>
+	一个查询依赖另一个查询.<br><br>
+	
+	多表查询例子:<br>
+	1.查询用户的订单,没有订单的用户不显示:<br>
+	隐式内连接:select user.*,orders.* from user ,orders where user.id=orders.user_id;<br>
+	显示内连接:select user.*,orders.* from user join orders on user.id=orders.user_id;<br><br>
+	
+	2.查询所有用户的订单详情:<br>
+	左外连接: user在左:select user.*,orders.* from user left join orders on user.id=orders.user_id;<br><br>
 			
+	3.查看用户为张三的订单详情:<br>
+	select * from orders where user_id = (select id from User where username = '张三');<br><br>
+	
+	4.查询出订单的价格大于300的所有用户信息。<br>
+	select * from user where id in(select user_id from orders where price >300);<br><br>
+	
+	5.查询订单价格大于300的订单信息及相关用户的信息:<br>
+	内连接:select orders.*,user.* from orders,user where user.id=orders.user_id  and orders.price>300;<br>
+	子查询:是将一个查询的结果作为一张临时表:<br>		
+	select user.*,tmp.* from user,(select * from orders where price>300) as tmp where user.id=tmp.user_id;<br><br>
+	
+	给表起别名:<br>
+	格式: 表 [as] 别名<br><br>
+	
 	<p><b>------mysql------</b></p>
 	
 </body>
