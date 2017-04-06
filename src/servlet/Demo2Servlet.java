@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * ÓÃÀ´½ÓÊÜDemo1Servlet×ª·¢µÄÇëÇó
+ * ç”¨æ¥æ¥å—Demo1Servletè½¬å‘çš„è¯·æ±‚
  * 
  * @author wubin
  * 
@@ -21,7 +21,7 @@ public class Demo2Servlet extends HttpServlet {
 
 		String requestParam = (String) request.getAttribute("requestParam");
 		if (null != requestParam) {
-			System.out.println("Õâ¸öÊÇDemo2Servlet,ÊÕµ½ÁË×ª·¢¹ıÀ´µÄÇëÇó,´«µİµÄÖµÊÇ:" + requestParam);
+			System.out.println("è¿™ä¸ªæ˜¯Demo2Servlet,æ”¶åˆ°äº†è½¬å‘è¿‡æ¥çš„è¯·æ±‚,ä¼ é€’çš„å€¼æ˜¯:" + requestParam);
 		}
 	}
 

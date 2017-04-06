@@ -18,39 +18,39 @@ public class LoginServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		// ÄÃÈ¡ä¯ÀÀÆ÷Æ÷´«µİµÄÊı¾İ
+		// æ‹¿å–æµè§ˆå™¨å™¨ä¼ é€’çš„æ•°æ®
 		String name = request.getParameter("username");
 		String pass = request.getParameter("password");
 		String remeber = request.getParameter("remeber");
 
-		System.out.println("ÓÃ»§Ãû = " + name + ",ÃÜÂë = " + pass);
+		System.out.println("ï¿½Ã»ï¿½ï¿½ï¿½ = " + name + ",ï¿½ï¿½ï¿½ï¿½ = " + pass);
 
-		// ÅĞ¶ÏÓÃ»§ÊÇ·ñÊÇºÏ·¨ÓÃ»§ : ¼Ù¶¨nameºÍpassµÄÄæĞòÒ»Ñù¾ÍÊÇºÏ·¨ÓÃ»§
-		// ÄÃµ½ÃÜÂëµÄÄæĞò
+		// åˆ¤æ–­ç”¨æˆ·æ˜¯å¦æ˜¯åˆæ³•ç”¨æˆ· : å‡å®šnameå’Œpassçš„é€†åºä¸€æ ·å°±æ˜¯åˆæ³•ç”¨æˆ·
+		// æ‹¿åˆ°å¯†ç çš„é€†åº
 		String pass1 = new StringBuffer(pass).reverse().toString();
 
-		// ÅĞ¶Ï
+		// åˆ¤æ–­
 		if (name.equals(pass1)) {
-			// ÊÇºÏ·¨ÓÃ»§
-			// ÅĞ¶ÏÓÃ»§ÊÇ·ñÑ¡ÔñÁË¼Ç×¡ÓÃ»§ÃûºÍÃÜÂë
-			// ËµÃ÷ÓÃ»§Ñ¡ÔñÁË¼ÇÂ¼
+			// æ˜¯åˆæ³•ç”¨æˆ·
+			// åˆ¤æ–­ç”¨æˆ·æ˜¯å¦é€‰æ‹©äº†è®°ä½ç”¨æˆ·åå’Œå¯†ç 
+			// è¯´æ˜ç”¨æˆ·é€‰æ‹©äº†è®°å½•
 			Cookie c = new Cookie("name", name);
 			Cookie c1 = new Cookie("pass", pass);
 			if ("on".equals(remeber)) {
-				// Éè¶¨´æ´¢µ½¿Í»§¶ËµÄÓ²ÅÌÉÏ
+				// è®¾å®šå­˜å‚¨åˆ°å®¢æˆ·ç«¯çš„ç¡¬ç›˜ä¸Š
 				c.setMaxAge(Integer.MAX_VALUE);
 				c1.setMaxAge(Integer.MAX_VALUE);
 
 			} else {
-				// Éè¶¨¿Í»§¶Ë´æ´¢µÄÓÃ»§ÃûºÍÃÜÂëÁ¢¿ÌÊ§Ğ§
+				// è®¾å®šå®¢æˆ·ç«¯å­˜å‚¨çš„ç”¨æˆ·åå’Œå¯†ç ç«‹åˆ»å¤±æ•ˆ
 				c.setMaxAge(0);
 				c1.setMaxAge(0);
 			}
-			// Éè¶¨·ÃÎÊÂ·¾¶
+			// è®¾å®šè®¿é—®è·¯å¾„
 			c.setPath(request.getContextPath());
 			c1.setPath(request.getContextPath());
 
-			// Ïò¿Í»§¶Ë·¢ËÍCookie
+			// å‘å®¢æˆ·ç«¯å‘é€Cookie
 			response.addCookie(c);
 			response.addCookie(c1);
 
@@ -58,8 +58,8 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("MainServlet").forward(request,
 					response);
 		} else {
-			// ·Ç·¨ÓÃ»§
-			request.setAttribute("error", "ÓÃ»§Ãû»òÕßÃÜÂë´íÎó");
+			// éæ³•ç”¨æˆ·
+			request.setAttribute("error", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			request.getRequestDispatcher("UIServlet")
 					.forward(request, response);
 		}

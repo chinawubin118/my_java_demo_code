@@ -14,14 +14,14 @@ public class Session1Servlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		/**
-		 * getsession()·½·¨×öÁËÁ½¼şÊÂ£º 1. ¿´¿Í»§¶ËÊÇ·ñĞ¯´øÁËJSESSIONIDCookie 2.
-		 * Èç¹ûÃ»ÓĞĞ¯´ø£¬´´½¨Ò»¸öĞÂµÄsession¶ÔÏó£¬²¢·ÖÅäÒ»¸öÎ¨Ò»µÄid,·¢ËÍµ½¿Í»§¶Ë£¬´æ´¢ÔÚ¿Í»§¶ËµÄ»º´æÖĞ
-		 * Èç¹ûĞ¯´øÁË£¬½«¸ù¾İcookieµÄÖµ(id)µ½·şÎñ¶ËµÄÄÚ´æÖĞÑ°ÕÒsession£¬Èç¹ûÕÒµ½ÁËÔò·µ»Ø´ËsessionÎª¿Í»§¶Ë·şÎñ£¬
+		 * getsession()æ–¹æ³•åšäº†ä¸¤ä»¶äº‹ï¼š 1. çœ‹å®¢æˆ·ç«¯æ˜¯å¦æºå¸¦äº†JSESSIONIDCookie 2.
+		 * å¦‚æœæ²¡æœ‰æºå¸¦ï¼Œåˆ›å»ºä¸€ä¸ªæ–°çš„sessionå¯¹è±¡ï¼Œå¹¶åˆ†é…ä¸€ä¸ªå”¯ä¸€çš„id,å‘é€åˆ°å®¢æˆ·ç«¯ï¼Œå­˜å‚¨åœ¨å®¢æˆ·ç«¯çš„ç¼“å­˜ä¸­
+		 * å¦‚æœæºå¸¦äº†ï¼Œå°†æ ¹æ®cookieçš„å€¼(id)åˆ°æœåŠ¡ç«¯çš„å†…å­˜ä¸­å¯»æ‰¾sessionï¼Œå¦‚æœæ‰¾åˆ°äº†åˆ™è¿”å›æ­¤sessionä¸ºå®¢æˆ·ç«¯æœåŠ¡ï¼Œ
 		 */
 		HttpSession session = request.getSession();
 		String id = session.getId();
-		System.out.println("Session1ServleµÃµ½µÄJSESSIONID:" + id);
-		session.setAttribute("name", "Lotte±ó");
+		System.out.println("Session1Servleå¾—åˆ°çš„JSESSIONID:" + id);
+		session.setAttribute("name", "Lotteæ–Œ");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

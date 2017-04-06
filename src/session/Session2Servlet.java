@@ -13,13 +13,13 @@ public class Session2Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// »ñÈ¡session¶ÔÏó
+		// è·å–sessionå¯¹è±¡
 		HttpSession session = request.getSession();
-		System.out.println("Session2ServleµÃµ½µÄJSESSIONID:" + session.getId());
-		// ´Ósession¶ÔÏóÖĞ»ñÈ¡Êı¾İ
+		System.out.println("Session2Servleå¾—åˆ°çš„JSESSIONID:" + session.getId());
+		// ä»sessionå¯¹è±¡ä¸­è·å–æ•°æ®
 		String name = (String) session.getAttribute("name");
 
-		System.out.println("Í¨¹ıSession¶ÔÏóÄÃµ½µÄname = " + name);
+		System.out.println("é€šè¿‡Sessionå¯¹è±¡æ‹¿åˆ°çš„name = " + name);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

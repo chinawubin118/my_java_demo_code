@@ -12,7 +12,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 import bean.User;
 
-//»ñÈ¡±íµ¥ÖĞµÄÊı¾İ(Ò³Ãæ:register.html)
+//è·å–è¡¨å•ä¸­çš„æ•°æ®(é¡µé¢:register.html)
 public class GetFormDataServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -20,15 +20,15 @@ public class GetFormDataServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8") ;
 		
 		User user = new User() ;
-		System.out.println("·â×°Ç°£º " + user);
-		//½«±íµ¥Êı¾İ·â×°µ½user¶ÔÏóÖĞ
+		System.out.println("å°è£…å‰ï¼š " + user);
+		//å°†è¡¨å•æ•°æ®å°è£…åˆ°userå¯¹è±¡ä¸­
 		try {
 			BeanUtils.populate(user, request.getParameterMap()) ;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		System.out.println("·â×°ºó£º " + user);
+		System.out.println("å°è£…åï¼š " + user);
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

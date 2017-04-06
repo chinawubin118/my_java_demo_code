@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//°üº¬ÉúÃüÖÜÆÚ·½·¨
+//åŒ…å«ç”Ÿå‘½å‘¨æœŸæ–¹æ³•
 public class Demo1Servlet extends HttpServlet {
 
 	public Demo1Servlet() {
@@ -34,24 +34,24 @@ public class Demo1Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		// »ñÈ¡ServletContext¶ÔÏó
+		// è·å–ServletContextå¯¹è±¡
 		ServletContext context = this.getServletContext();
-		// Ê¹ÓÃServletContext¶ÔÏó(×÷ÎªÓò¶ÔÏóÊ¹ÓÃ)´æ´¢Êı¾İ
+		// ä½¿ç”¨ServletContextå¯¹è±¡(ä½œä¸ºåŸŸå¯¹è±¡ä½¿ç”¨)å­˜å‚¨æ•°æ®
 		context.setAttribute("attKey1", "valueInAttKey1");
-		// È¡³öServletContext¶ÔÏó´æ´¢µÄÊı¾İ²¢Êä³ö
-		System.out.println("ServletContext_attKey1´æ´¢µÄÖµÊÇ:"
+		// å–å‡ºServletContextå¯¹è±¡å­˜å‚¨çš„æ•°æ®å¹¶è¾“å‡º
+		System.out.println("ServletContext_attKey1å­˜å‚¨çš„å€¼æ˜¯:"
 				+ context.getAttribute("attKey1"));
 
-		// µÃµ½ÇëÇó×ª·¢Æ÷
+		// å¾—åˆ°è¯·æ±‚è½¬å‘å™¨
 		RequestDispatcher dispatcher = context
 				.getRequestDispatcher("/servlet/Demo2Servlet");
 		request.setAttribute("requestParam", "This is the request param.....");
-		// ×ª·¢ÇëÇó
+		// è½¬å‘è¯·æ±‚
 		// dispatcher.forward(request, response);
 
 		/**
-		 * »ñÈ¡×ÊÔ´ÎÄ¼şµÄÈıÖÖ·½·¨: 1.Í¨¹ıServletContext¶ÔÏó»ñÈ¡. 2.Í¨¹ıResourceBundle¶ÔÏó»ñÈ¡.
-		 * 3.Í¨¹ıÀà¼ÓÔØÆ÷»ñÈ¡.
+		 * è·å–èµ„æºæ–‡ä»¶çš„ä¸‰ç§æ–¹æ³•: 1.é€šè¿‡ServletContextå¯¹è±¡è·å–. 2.é€šè¿‡ResourceBundleå¯¹è±¡è·å–.
+		 * 3.é€šè¿‡ç±»åŠ è½½å™¨è·å–.
 		 */
 		getResource11(context);
 		getResource12(context);
@@ -62,91 +62,91 @@ public class Demo1Servlet extends HttpServlet {
 		getResource32();
 		getResource33();
 
-		// ½â¾öresponse¶ÔÏóµÄÖĞÎÄÂÒÂëÎÊÌâ
-		String s = "±ó¸çÀÏµÜ";
-		response.setContentType("text/html;charset=utf-8");// Éè¶¨·şÎñÆ÷½«Êı¾İ±àÂëÊ±ÓÃµÄÂë±í;Í¨Öªä¯ÀÀÆ÷½âÂëÓÃµÄÂë±í.
-		response.getOutputStream().write(s.getBytes("UTF-8"));// ×Ö½ÚÁ÷Êä³öÖĞÎÄ.
-		// response.getWriter().write(s);// ×Ö·ûÁ÷Êä³öÖĞÎÄ.
+		// è§£å†³responseå¯¹è±¡çš„ä¸­æ–‡ä¹±ç é—®é¢˜
+		String s = "æ–Œå“¥è€å¼Ÿ";
+		response.setContentType("text/html;charset=utf-8");// è®¾å®šæœåŠ¡å™¨å°†æ•°æ®ç¼–ç æ—¶ç”¨çš„ç è¡¨;é€šçŸ¥æµè§ˆå™¨è§£ç ç”¨çš„ç è¡¨.
+		response.getOutputStream().write(s.getBytes("UTF-8"));// å­—èŠ‚æµè¾“å‡ºä¸­æ–‡.
+		// response.getWriter().write(s);// å­—ç¬¦æµè¾“å‡ºä¸­æ–‡.
 	}
 
 	private void getResource11(ServletContext context) {
-		// »ñÈ¡p1.propertiesÎÄ¼şµÄÂ·¾¶
+		// è·å–p1.propertiesæ–‡ä»¶çš„è·¯å¾„
 		String path = context.getRealPath("/WEB-INF/classes/p1.properties");
-		// ´´½¨Properties¶ÔÏó
+		// åˆ›å»ºPropertieså¯¹è±¡
 		Properties pro = new Properties();
 		try {
-			// ¼ÓÔØÎÄ¼ş
+			// åŠ è½½æ–‡ä»¶
 			pro.load(new FileReader(path));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Í¨¹ıServletContext»ñÈ¡µÄp1.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		System.out.println("é€šè¿‡ServletContextè·å–çš„p1.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ pro.get("key"));
 	}
 
-	// »ñÈ¡p2×ÊÔ´ÎÄ¼şµÄÄÚÈİ
+	// è·å–p2èµ„æºæ–‡ä»¶çš„å†…å®¹
 	public void getResource12(ServletContext context) {
-		// »ñÈ¡p1.propertiesÎÄ¼şµÄÂ·¾¶
+		// è·å–p1.propertiesæ–‡ä»¶çš„è·¯å¾„
 		String path = context
 				.getRealPath("/WEB-INF/classes/servlet/p2.properties");// servlet.p2.properties
-		// ´´½¨Ò»¸öProperties¶ÔÏó
+		// åˆ›å»ºä¸€ä¸ªPropertieså¯¹è±¡
 		Properties pro = new Properties();
 		try {
-			// ¼ÓÔØÎÄ¼ş
+			// åŠ è½½æ–‡ä»¶
 			pro.load(new FileReader(path));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Í¨¹ıServletContext»ñÈ¡µÄp2.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		System.out.println("é€šè¿‡ServletContextè·å–çš„p2.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ pro.get("key"));
 	}
 
-	// »ñÈ¡p3×ÊÔ´ÎÄ¼şµÄÄÚÈİ
+	// è·å–p3èµ„æºæ–‡ä»¶çš„å†…å®¹
 	public void getResource13(ServletContext context) {
-		// »ñÈ¡p1.propertiesÎÄ¼şµÄÂ·¾¶
+		// è·å–p1.propertiesæ–‡ä»¶çš„è·¯å¾„
 		String path = context.getRealPath("/p3.properties");
-		// ´´½¨Properties¶ÔÏó
+		// åˆ›å»ºPropertieså¯¹è±¡
 		Properties pro = new Properties();
 		try {
-			// ¼ÓÔØÎÄ¼ş
+			// åŠ è½½æ–‡ä»¶
 			pro.load(new FileReader(path));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println("Í¨¹ıServletContext»ñÈ¡µÄp3.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		System.out.println("é€šè¿‡ServletContextè·å–çš„p3.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ pro.get("key"));
 	}
 
-	// Í¨¹ıResourceBunbleÄÃÈ¡×ÊÔ´ÎÄ¼ş£º»ñÈ¡p1×ÊÔ´ÎÄ¼şµÄÄÚÈİ Ä¬ÈÏÂ·¾¶ÊÇsrc£¬¶ÔÓÃµ½web»·¾³¾ÍÊÇclassesÄ¿Â¼
+	// é€šè¿‡ResourceBunbleæ‹¿å–èµ„æºæ–‡ä»¶ï¼šè·å–p1èµ„æºæ–‡ä»¶çš„å†…å®¹ é»˜è®¤è·¯å¾„æ˜¯srcï¼Œå¯¹ç”¨åˆ°webç¯å¢ƒå°±æ˜¯classesç›®å½•
 	public void getResource21() {
-		// »ñÈ¡ResourceBundle¶ÔÏó(×¨ÃÅÓÃÀ´»ñÈ¡propertiesÎÄ¼şµÄĞÅÏ¢)
+		// è·å–ResourceBundleå¯¹è±¡(ä¸“é—¨ç”¨æ¥è·å–propertiesæ–‡ä»¶çš„ä¿¡æ¯)
 		ResourceBundle rb = ResourceBundle.getBundle("p1");
-		// »ñÈ¡ÎÄ¼şÖĞµÄÄÚÈİ
-		System.out.println("Í¨¹ıResourceBundle»ñÈ¡µÄp1.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		// è·å–æ–‡ä»¶ä¸­çš„å†…å®¹
+		System.out.println("é€šè¿‡ResourceBundleè·å–çš„p1.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ rb.getString("key"));
 	}
 
-	// Í¨¹ıResourceBunbleÄÃÈ¡×ÊÔ´ÎÄ¼ş£º»ñÈ¡p2×ÊÔ´ÎÄ¼şµÄÄÚÈİ
+	// é€šè¿‡ResourceBunbleæ‹¿å–èµ„æºæ–‡ä»¶ï¼šè·å–p2èµ„æºæ–‡ä»¶çš„å†…å®¹
 	public void getResource22() {
-		// »ñÈ¡ResourceBundle¶ÔÏó(×¨ÃÅÓÃÀ´»ñÈ¡propertiesÎÄ¼şµÄĞÅÏ¢)
+		// è·å–ResourceBundleå¯¹è±¡(ä¸“é—¨ç”¨æ¥è·å–propertiesæ–‡ä»¶çš„ä¿¡æ¯)
 		ResourceBundle rb = ResourceBundle.getBundle("servlet.p2");
-		// »ñÈ¡ÎÄ¼şÖĞµÄÄÚÈİ
-		System.out.println("Í¨¹ıResourceBundle»ñÈ¡µÄp2.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		// è·å–æ–‡ä»¶ä¸­çš„å†…å®¹
+		System.out.println("é€šè¿‡ResourceBundleè·å–çš„p2.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ rb.getString("key"));
 	}
 
-	// Í¨¹ıÀà¼ÓÔØÆ÷ÄÃÈ¡×ÊÔ´ÎÄ¼ş£º»ñÈ¡p1×ÊÔ´ÎÄ¼şµÄÄÚÈİ : Ä¬ÈÏÂ·¾¶ÊÇsrc£¬¶ÔÓÃµ½web»·¾³¾ÍÊÇclassesÄ¿Â¼
+	// é€šè¿‡ç±»åŠ è½½å™¨æ‹¿å–èµ„æºæ–‡ä»¶ï¼šè·å–p1èµ„æºæ–‡ä»¶çš„å†…å®¹ : é»˜è®¤è·¯å¾„æ˜¯srcï¼Œå¯¹ç”¨åˆ°webç¯å¢ƒå°±æ˜¯classesç›®å½•
 	public void getResource31() {
-		// »ñÈ¡Àà¼ÓÔØÆ÷µÄ·½Ê½
+		// è·å–ç±»åŠ è½½å™¨çš„æ–¹å¼
 		/*
-		 * 1. Í¨¹ıÀàÃû ServletContext7.class.getClassLoader() 2. Í¨¹ı¶ÔÏó
+		 * 1. é€šè¿‡ç±»å ServletContext7.class.getClassLoader() 2. é€šè¿‡å¯¹è±¡
 		 * this.getClass().getClassLoader() 3. Class.forName()
-		 * »ñÈ¡Class.forName("ServletContext7").getClassLoader()
+		 * è·å–Class.forName("ServletContext7").getClassLoader()
 		 */
 		InputStream in = this.getClass().getClassLoader()
 				.getResourceAsStream("p1.properties");
 
-		// ´´½¨Properties¶ÔÏó
+		// åˆ›å»ºPropertieså¯¹è±¡
 		Properties pro = new Properties();
 		try {
 			pro.load(in);
@@ -154,39 +154,39 @@ public class Demo1Servlet extends HttpServlet {
 			e.printStackTrace();
 		}
 
-		System.out.println("Í¨¹ıClassLoader»ñÈ¡µÄp1.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		System.out.println("é€šè¿‡ClassLoaderè·å–çš„p1.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ pro.get("key"));
 	}
 
-	// Í¨¹ıÀà¼ÓÔØÆ÷ÄÃÈ¡×ÊÔ´ÎÄ¼ş£º»ñÈ¡p2×ÊÔ´ÎÄ¼şµÄÄÚÈİ : Ä¬ÈÏÂ·¾¶ÊÇsrc£¬¶ÔÓÃµ½web»·¾³¾ÍÊÇclassesÄ¿Â¼
+	// é€šè¿‡ç±»åŠ è½½å™¨æ‹¿å–èµ„æºæ–‡ä»¶ï¼šè·å–p2èµ„æºæ–‡ä»¶çš„å†…å®¹ : é»˜è®¤è·¯å¾„æ˜¯srcï¼Œå¯¹ç”¨åˆ°webç¯å¢ƒå°±æ˜¯classesç›®å½•
 	public void getResource32() {
 		InputStream in = this.getClass().getClassLoader()
 				.getResourceAsStream("servlet/p2.properties");
 
-		// ´´½¨Properties¶ÔÏó
+		// åˆ›å»ºPropertieså¯¹è±¡
 		Properties pro = new Properties();
 		try {
 			pro.load(in);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Í¨¹ıClassLoader»ñÈ¡µÄp2.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		System.out.println("é€šè¿‡ClassLoaderè·å–çš„p2.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ pro.get("key"));
 	}
 
-	// Í¨¹ıÀà¼ÓÔØÆ÷ÄÃÈ¡×ÊÔ´ÎÄ¼ş£º»ñÈ¡p3×ÊÔ´ÎÄ¼şµÄÄÚÈİ : Ä¬ÈÏÂ·¾¶ÊÇsrc£¬¶ÔÓÃµ½web»·¾³¾ÍÊÇclassesÄ¿Â¼
+	// é€šè¿‡ç±»åŠ è½½å™¨æ‹¿å–èµ„æºæ–‡ä»¶ï¼šè·å–p3èµ„æºæ–‡ä»¶çš„å†…å®¹ : é»˜è®¤è·¯å¾„æ˜¯srcï¼Œå¯¹ç”¨åˆ°webç¯å¢ƒå°±æ˜¯classesç›®å½•
 	public void getResource33() {
 		InputStream in = this.getClass().getClassLoader()
 				.getResourceAsStream("../../p3.properties");
 
-		// ´´½¨Properties¶ÔÏó
+		// åˆ›å»ºPropertieså¯¹è±¡
 		Properties pro = new Properties();
 		try {
 			pro.load(in);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Í¨¹ıClassLoader»ñÈ¡µÄp3.propertiesÖĞµÄkey¶ÔÓ¦µÄÖµÊÇ:"
+		System.out.println("é€šè¿‡ClassLoaderè·å–çš„p3.propertiesä¸­çš„keyå¯¹åº”çš„å€¼æ˜¯:"
 				+ pro.get("key"));
 	}
 

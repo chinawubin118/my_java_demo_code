@@ -16,29 +16,29 @@ public class TestDownloadChineseFileNameServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// »ñÈ¡ÎÄ¼şµÄÂ·¾¶
+		// è·å–æ–‡ä»¶çš„è·¯å¾„
 		String path = getServletContext().getRealPath(
-				"/WEB-INF/classes/ÖĞÎÄÃû³ÆÎÄ¼ş.txt"); // Ä¬ÈÏ´Ó¹¤³ÌÂ·¾¶¿ªÊ¼
+				"/WEB-INF/classes/ä¸­æ–‡åç§°æ–‡ä»¶.txt"); // é»˜è®¤ä»å·¥ç¨‹è·¯å¾„å¼€å§‹
 
-		// ´´½¨ÊäÈëÁ÷
+		// åˆ›å»ºè¾“å…¥æµ
 		InputStream is = new FileInputStream(path);
 		byte[] bs = new byte[1024];
 		int b = 0;
 
-		// ´´½¨Êä³öÁ÷¶ÔÏó
+		// åˆ›å»ºè¾“å‡ºæµå¯¹è±¡
 		ServletOutputStream os = response.getOutputStream();
 
-		// ¶ÔÖĞÎÄ½øĞĞ±àÂë
-		// ÄÃµ½ÖĞÎÄµÄÎÄ¼şÃû
+		// å¯¹ä¸­æ–‡è¿›è¡Œç¼–ç 
+		// æ‹¿åˆ°ä¸­æ–‡çš„æ–‡ä»¶å
 		String name = path.substring(path.lastIndexOf("\\") + 1, path.length());
 		System.out.println(name);
 
-		// ¶ÔÖĞÎÄÎÄ¼şÃû½øĞĞ±àÂë
+		// å¯¹ä¸­æ–‡æ–‡ä»¶åè¿›è¡Œç¼–ç 
 		name = URLEncoder.encode(name, "utf-8");
-		System.out.println("±àÂëºó£º " + name);
+		System.out.println("ç¼–ç åï¼š " + name);
 
-		// Í¨Öªä¯ÀÀÆ÷ÒÔÏÂÔØµÄ·½Ê½´ò¿ªÎÄ¼ş
-		// response.setHeader("Content-Disposition","attachment;filename=ÖĞÎÄÃû³ÆÎÄ¼ş.txt");
+		// é€šçŸ¥æµè§ˆå™¨ä»¥ä¸‹è½½çš„æ–¹å¼æ‰“å¼€æ–‡ä»¶
+		// response.setHeader("Content-Disposition","attachment;filename=ä¸­æ–‡åç§°æ–‡ä»¶.txt");
 		response.setHeader("Content-Disposition", "attachment;filename=" + name);
 
 		while ((b = is.read(bs)) != -1) {

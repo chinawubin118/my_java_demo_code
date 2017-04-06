@@ -18,37 +18,37 @@ public class UIServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
-		// ÄÃµ½´íÎóĞÅÏ¢
+		// æ‹¿åˆ°é”™è¯¯ä¿¡æ¯
 		String name = (String) request.getAttribute("error");
 		if (name != null)
 			out.write("<font color = red>" + name + "</font>");
 
 		String username = "";
 		String password = "";
-		// ÄÃµ½¿Í»§¶ËĞ¯´øµÄËùÓĞµÄCookie
+		// æ‹¿åˆ°å®¢æˆ·ç«¯æºå¸¦çš„æ‰€æœ‰çš„Cookie
 		Cookie[] cs = request.getCookies();
-		// Ñ­»·ÅĞ¶Ï
+		// å¾ªç¯åˆ¤æ–­
 		for (int i = 0; cs != null && i < cs.length; i++) {
 			Cookie c = cs[i];
 			if (c.getName().equals("name")) {
-				// ËµÃ÷ÕÒµ½ÁË´æ´¢ÓÃ»§ÃûµÄcookie
+				// è¯´æ˜æ‰¾åˆ°äº†å­˜å‚¨ç”¨æˆ·åçš„cookie
 				username = c.getValue();
 			}
 			if (c.getName().equals("pass")) {
-				// ËµÃ÷ÕÒµ½ÁË´æ´¢ÃÜÂëµÄCookie
+				// è¯´æ˜æ‰¾åˆ°äº†å­˜å‚¨å¯†ç çš„Cookie
 				password = c.getValue();
 			}
 		}
 
-		// ´´½¨µÇÂ½Ò³Ãæ
+		// åˆ›å»ºç™»é™†é¡µé¢
 		out.write("<form action = '" + request.getContextPath()
 				+ "/servlet/LoginServlet' method = 'post'>");
-		out.write("ĞÕÃû£º<input type = 'text' name = 'username' value = '"
+		out.write("å§“å<input type = 'text' name = 'username' value = '"
 				+ username + "'></br></br>");
-		out.write("ÃÜÂë£º<input type = 'text' name = 'password' value = '"
+		out.write("å¯†ç <input type = 'text' name = 'password' value = '"
 				+ password + "'></br></br>");
-		out.write("<input type = 'checkbox' name = 'remeber' value = 'on'>¼Ç×¡ÎÒ</br></br>");
-		out.write("<input type = 'submit' value = 'µã»÷µÇÂ¼'><br>");
+		out.write("<input type = 'checkbox' name = 'remeber' value = 'on'>è®°ä½æˆ‘</br></br>");
+		out.write("<input type = 'submit' value = 'ç‚¹å‡»ç™»å½•'><br>");
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
