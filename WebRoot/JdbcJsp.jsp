@@ -93,5 +93,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	2.通过ResourceBundle 对象获取配置信息;<br>
 	String getString(String key):通过执行key获取指定的value;<br>
 	
+	<p><b>------连接池:管理数据库的连接------</b></p>
+
+	作用:提高项目的性能.<br>
+	就是在连接池初始化的时候存入一定数量的连接,用的时候通过方法获取,不用的时候归还连接即可;所有的连接池必须实现 javax.sql.DataSource接口;<br>
+	
+	获取连接方法:Connection getConnection();<br>
+	归还连接的方法:connection.close();<br><br>
+	
   </body>
 </html>
