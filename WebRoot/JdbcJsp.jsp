@@ -108,5 +108,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	3.对需要增强的方法进行加强;<br>
 	4.对不需要加强的方法调用原来方法;<br>
 	
+	<p><b>------常用的连接池------</b></p>
+	DBCP(apache组织的):(了解即可);<br><br>
+	
+	C3P0:(★)<br>
+	hibernate和spring使用,有自动回收空闲连接的功能;<br><br>
+		
+	使用步骤:<br>
+			1.导入jar包(c3p0-0.9.1.2.jar);<br>
+			2.使用api:<br>
+				a.硬编码(不推荐):new ComboPooledDataSource();<br><br>
+				
+				b.通过配置文件的方式:<br>
+					配置文件的名称:c3p0.properties 或者 c3p0-config.xml:<br>
+					配置文件的路径:src下:<br>
+			
+					new ComboPooledDataSource();//使用默认的配置<br>
+					new ComboPooledDataSource(String configName);//使用命名的配置 若配置的名字找不到,使用默认的配置<br>
+	
+	<p><b>------dbutils------</b></p>				
+	apache组织提供的一个工具类,jdbc的框架;<br>
+	使用步骤:<br>
+		1.导入jar包(commons-dbutils-1.4.jar);<br>
+		2.创建queryrunner类对象;queryrunner作用:操作sql语句;构造方法:new QueryRunner(Datasource ds);<br>
+		3.编写sql;<br>
+		4.执行sql;<br>
+			queryrunner.query(..):执行r操作<br>
+			queryrunner.update(...):执行cud操作<br>
+	
   </body>
 </html>
