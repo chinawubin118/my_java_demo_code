@@ -101,5 +101,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	获取连接方法:Connection getConnection();<br>
 	归还连接的方法:connection.close();<br><br>
 	
+	装饰者模式:★★★<br>
+	使用步骤:<br>
+	1.装饰者和被装饰者实现同一个接口或者继承同一个类;<br>
+	2.装饰者中要有被装饰者的引用;<br>
+	3.对需要增强的方法进行加强;<br>
+	4.对不需要加强的方法调用原来方法;<br>
+	
   </body>
 </html>
