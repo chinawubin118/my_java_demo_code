@@ -79,6 +79,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					请求转发 静态包含 动态包含<br><br>
 			
 	taglib指令:导入标签库<br>
+	
+	<p><b>------jsp的9大内置对象:★★★------</b></p>
+		out......JspWriter<br>
+		request......HttpServletRequest<br>
+		responst......HttpServletResponse<br>
+		session......HttpSession<br>
+		exception......Throwable9<br>
+		page......Servlet(this)<br>
+		config......ServletConfig<br>
+		application......<br>ServletContext<br>
+		pageContext......PageContext<br><br>
+		
+	jsp的域对象:理解<br>
+		application......整个项目<br>
+		session......一次会话<br>
+		request......一次请求<br>
+		pageContext......一个页面<br>
   
   </body>
 </html>
