@@ -134,7 +134,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		3.编写sql;<br>
 		4.执行sql;<br>
 			queryrunner.query(..):执行r操作<br>
-			queryrunner.update(...):执行cud操作<br>
+			queryrunner.update(...):执行cud操作<br><br>
+			
+	核心Api<br><br>
+	
+	QueryRunner:作用:操作sql语句<br>
+		构造器:new QueryRunner(Datasource ds);<br>
+		注意:底层帮我们创建连接,创建语句执行者 ,释放资源.<br>
+		常用方法:<br>
+			query(..);<br>
+			update(..);<br><br>
+	
+	DbUtils:释放资源,控制事务类;<br>
+		closeQuietly(conn);内部处理了异常;<br>
+		commitAndClose(Connection conn)；提交事务并释放连接；<br><br>
+	
+	ResultSetHandler(接口):封装结果集;<br>
+	主要实现类:<br>
+		 
+		 (了解)ArrayHandler, 将查询结果的第一条记录封装成数组,返回.<br>
+		 (了解)ArrayListHandler, 将查询结果的每一条记录封装成数组,将每一个数组放入list中返回.<br>
+		 ★★BeanHandler, 将查询结果的第一条记录封装成指定的bean对象,返回.<br>
+		 ★★BeanListHandler, 将查询结果的每一条记录封装成指定的bean对象,将每一个bean对象放入list中返回.<br>
+		 (了解)ColumnListHandler, 将查询结果的指定一列放入list中返回. <br>
+		 (了解)MapHandler, 将查询结果的第一条记录封装成map,字段名作为key,值为value返回.<br>
+		 ★MapListHandler, 将查询结果的每一条记录封装map集合,将每一个map集合放入list中返回.<br>
+		 ★ScalarHandler,针对于聚合函数 例如:count(*) 返回的是一个Long值.<br>
+		
 	
   </body>
 </html>

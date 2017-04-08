@@ -1,10 +1,12 @@
-package jdbc;
+package jdbc.demos;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import jdbc.JdbcUtils;
 
 import org.junit.Test;
 
@@ -83,7 +85,6 @@ public class Jdbc1Demo {
 			// 释放资源
 			JdbcUtils.closeResource(conn, st, rs);
 		}
-
 	}
 
 	// 更新
