@@ -23,10 +23,15 @@
 </head>
 
 <body>
-	This is my JSP page.
-	<br> This page is for test my_java_demo.....
-	<br>
-	<p>看看效果.....</p>
-	<p>看到了吗.....</p>
+	<a href="CookieAndSessionJsp.jsp">CookieAndSessionJsp</a><br>
+	<a href="JdbcJsp.jsp">Jdbc</a><br>
+	<a href="JQueryJsp.jsp">JQueryJsp</a><br>
+	<a href="JspElJstl.jsp">JspElJstl</a><br>
+	<a href="MyDemo1Jsp.jsp">MyDemo1</a><br>
+	<a href="MySqlJsp.jsp">MySql</a><br>
+	测试Jsp动作标签:<a href="/demo1/www/action/forward.jsp">forward:转发</a>&nbsp;
+	<a href="/demo1/www/action/include.jsp">include:动态包含</a><br>
+	<a href="${pageContext.request.contextPath}/www/jstl/for1.jsp">测试jstl:for each基本</a><br>
+	<a href="${pageContext.request.contextPath}/www/jstl/for2.jsp">测试jstl:for each高级</a><br>
 </body>
 </html>
