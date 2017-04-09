@@ -14,14 +14,15 @@ public class MainServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=UTF-8");
+//		response.setContentType("text/html;charset=UTF-8");
+		response.setContentType("application/json;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
 		String name = (String) request.getAttribute("name");
 
 		// out.write(name + "，欢迎你");
 
-		String json = "{\"succeed\":\"111\",\"sucInfo\":\"缺少必要参数！\",\"dataInfo\":[],\"interface_name\":\"getSchoolList\"}";
+		String json = "{\"succeed\":\"111\",\"sucInfo\":\"用户名和密码一致,登录成功\",\"interface_name\":\"getSchoolList\"}";
 
 		out.write(json);
 	}

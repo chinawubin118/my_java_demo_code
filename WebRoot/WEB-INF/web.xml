@@ -64,12 +64,12 @@
     <servlet-name>Session2Servlet</servlet-name>
     <servlet-class>session.Session2Servlet</servlet-class>
   </servlet>
-
-
-
-
-
-
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ShowAllProductServlet</servlet-name>
+    <servlet-class>demo1.web.ShowAllProductServlet</servlet-class>
+  </servlet>
 
 
 
@@ -109,7 +109,20 @@
   <servlet-mapping>
     <servlet-name>Session2Servlet</servlet-name>
     <url-pattern>/servlet/Session2Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ShowAllProductServlet</servlet-name>
+    <url-pattern>/servlet/ShowAllProductServlet</url-pattern>
   </servlet-mapping>	
+  
+  <servlet>
+  	<servlet-name>CodeServlet</servlet-name>
+  	<servlet-class>demos.demo2.web.CodeServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>CodeServlet</servlet-name>
+  	<url-pattern>/code</url-pattern>
+  </servlet-mapping>
   
   <!--  欢迎地址 -->
   <welcome-file-list>

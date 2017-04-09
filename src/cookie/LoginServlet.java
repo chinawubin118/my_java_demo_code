@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 		String pass = request.getParameter("password");
 		String remeber = request.getParameter("remeber");
 
-		System.out.println("�û��� = " + name + ",���� = " + pass);
+		System.out.println("用户名 = " + name + ",密码 = " + pass);
 
 		// 判断用户是否是合法用户 : 假定name和pass的逆序一样就是合法用户
 		// 拿到密码的逆序
@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
 					response);
 		} else {
 			// 非法用户
-			request.setAttribute("error", "�û�������������");
+			request.setAttribute("error", "用户名非法");
 			request.getRequestDispatcher("UIServlet")
 					.forward(request, response);
 		}

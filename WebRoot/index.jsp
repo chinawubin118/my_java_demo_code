@@ -33,5 +33,6 @@
 	<a href="/demo1/www/action/include.jsp">include:动态包含</a><br>
 	<a href="${pageContext.request.contextPath}/www/jstl/for1.jsp">测试jstl:for each基本</a><br>
 	<a href="${pageContext.request.contextPath}/www/jstl/for2.jsp">测试jstl:for each高级</a><br>
+	<a href="${pageContext.request.contextPath}/servlet/ShowAllProductServlet">小案例:查询数据库中的所有商品并展示出来"</a><br>
 </body>
 </html>
