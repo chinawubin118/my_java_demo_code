@@ -14,8 +14,8 @@ public class MainServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		request.setCharacterEncoding("UTF-8");
-//		response.setContentType("text/html;charset=UTF-8");
-		response.setContentType("application/json;charset=UTF-8");
+		response.setContentType("text/html;charset=UTF-8");//返回html
+//		response.setContentType("application/json;charset=UTF-8");//返回json
 		PrintWriter out = response.getWriter();
 
 		String name = (String) request.getAttribute("name");
