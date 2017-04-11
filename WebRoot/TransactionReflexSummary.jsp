@@ -47,8 +47,7 @@
 	
 	1.web
 		作用:展示数据 ----jsp<br><br>
-			
-			
+						
 			-----servlet-------<br>
 			接受请求<br>
 			找到对应的service,调用方法 完成逻辑操作<br>
@@ -205,6 +204,41 @@ jsp_el_jstl:<br>
 	jstl:<br>
 		if<br>
 		foreach
+		
+	<p><b>------分页展示数据------</b></p>
 	
+	将数据按照页码划分,提高用户的体验度.<br><br>
+
+	物理分页:一次只去数据库中查询当前页需要的数据.<br>
+	逻辑分页:一次性将所有数据查询出来,放入内存(集合),每次查询只需要去内存中截取.<br><br>
+	
+	mysql中分页(使用limit):<br>
+	格式1:
+		select ....  limit m,n;<br>
+		从索引为m条开始向后查找n条数据.<br>
+		就是从第m+1条 到 第m+n条 .<br>
+	格式2:<br>
+		select .... limit n;<br>
+		等价于:select .... limit 0,n;<br><br>
+		
+	假设每页显示3条数据:<br>
+		第一页------limit 0,3<br>
+		第二页------limit 3,3<br>
+		第三页------limit 6,3<br>
+		第n页------limit (n-1)*3,3<br><br>
+		
+	<b>公式:查看第页数据: limit (n-1)*pageSize,pageSize;(pageSize:每一页显示的条数)</b><br><br>
+	
+	扩展:<br>
+		oracle中 rownum<br>
+		sqlserver中 top<br><br>
+		
+	封装pageBean:<br>
+	1.当前页内容:list.....通过limit查询<br>
+	2.当前页:currPage.....前台传递过来.<br>
+	3.每页显示的条数:pagesize.....固定.<br>
+	4.总条数:totalCount count(*).....查询.<br>
+	5.总页数:计算公式:Math.ceil(totalCount*1.0/pageSize).<br>
+
   </body>
 </html>
