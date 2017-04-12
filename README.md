@@ -11,3 +11,4 @@ This is my java demo code.....
 - MySql.jsp.
 - Java Jdbc.
 - Jsp,El,Jstl
+- Ajax
