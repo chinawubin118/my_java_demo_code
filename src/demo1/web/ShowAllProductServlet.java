@@ -18,13 +18,11 @@ public class ShowAllProductServlet extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("请求来了...");
 		try {
 			productList =new ProductService().getAllProducts();
 		} catch (SQLException e) {
 			System.out.println("查询商品出现了异常...");
 		}
-		System.out.println("数据的大小是:" + productList.size());
 		request.setAttribute("productList", productList);
 		request.getRequestDispatcher("/www/demo1/show_all_products.jsp").forward(request, response);
 	}

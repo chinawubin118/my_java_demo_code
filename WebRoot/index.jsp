@@ -30,6 +30,7 @@
 	<a href="MyDemo1Jsp.jsp">MyDemo1</a><br>
 	<a href="MySqlJsp.jsp">MySql</a><br>
 	<a href="TransactionReflexSummary.jsp">TransactionReflexSummary</a><br>
+	<a href="${pageContext.request.contextPath}/ajax.jsp">Ajax&JQuery</a><br>
 	
 	<hr>
 	
