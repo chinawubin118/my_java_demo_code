@@ -342,6 +342,17 @@
 	给表起别名:<br>
 	格式: 表 [as] 别名<br><br>
 	
+	<p><b>------数据库备份和还原------</b></p>
+	数据库备份:<br>
+	1.通过图形化工具备份:<br>
+	2.mysql数据库通过命令备份(无需登录数据库):mysqldump -uroot -p1234 test_db>d:\1.sql<br>
+	(将test_db数据库备份到d:\1.sql)<br><br>
+	
+	数据库还原:<br>
+	1.无需登录数据库:mysql -uroot -p1234 bak1(小于号)d:\1.sql<br>
+	(需要提前手动创建数据库bak1)<br>
+	2.需要登录到指定的数据库上,创建一个数据库bak2,use bak2,然后执行sql语句:source d:\1.sql
+	
 	<p><b>------mysql------</b></p>
 	
 </body>
